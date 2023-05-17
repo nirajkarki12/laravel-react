@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Guest from '../navbar/Guest';
 
 export default function ReactApp() {
-    return (
-        <div>
-            Hello from ReactApp Component
-        </div>
-    );
+    return <Guest />;
 }
 
 if (document.getElementById('react-app')) {
