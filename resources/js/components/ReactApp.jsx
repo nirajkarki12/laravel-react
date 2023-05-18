@@ -4,7 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Guest from '../navbar/Guest';
 
 export default function ReactApp() {
-    return <Guest />;
+    return (
+        <Guest />
+    );
 }
 
 if (document.getElementById('react-app')) {
