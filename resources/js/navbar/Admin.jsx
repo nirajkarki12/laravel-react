@@ -1,22 +1,28 @@
 import { Routes, Route, NavLink } from 'react-router-dom';
-import Login from '../components/Login';
-import Register from '../components/Register';
+import AuthUser from "../components/AuthUser";
+import Home from "../components/Home";
 
-function Guest() {
+export default function Admin() {
+    const {token, logout} = AuthUser();
+    const logoutUser = () => {
+        if(token != undefined) {
+            logout();
+        }
+    }
     const routesArr = [
-        { path: '/login', name: 'Login', Component: Login, exact: false },
-        { path: '/register', name: 'Register', Component: Register, exact: false },
+        { path: '/dashboard', name: "Dashboard", Component: Home, exact: true },
     ];
-    return(
+
+    return (
         <>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div className="container">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">Login</NavLink>
+                            <NavLink className="nav-link" to="/dashboard" exact="true">Dashboard</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/register">Register</NavLink>
+                            <NavLink className="nav-link" onClick={logoutUser}>Logout</NavLink>
                         </li>
                     </ul>
                 </div>
@@ -30,6 +36,5 @@ function Guest() {
                 </Routes>
             </div>
         </>
-    );
+    )
 }
-export default Guest;
