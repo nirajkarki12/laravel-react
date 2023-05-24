@@ -9,6 +9,8 @@ export default function Login() {
     function submitForm() {
         http.post('/auth/login', { email: email, password: password}).then((res) => {
             setToken(res.data.user, res.data.access_token);
+        }).catch((error) => {
+            console.log(error.response.data.message)
         });
     }
 
